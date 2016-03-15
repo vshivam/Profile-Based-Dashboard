@@ -5,70 +5,34 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQM CSS-->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
 
-    <link id="jqm-ui-stylesheet" rel="stylesheet" href="css/light-theme/light-theme.min.css" />
-    <link id="jqm-icon-stylesheet" rel="stylesheet" href="css/light-theme/jquery.mobile.icons.min.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
-
-	<!-- jQuery JS-->
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <!-- jQM JS -->
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     
+    <script type="text/javascript" src="scripts/dynamix/widgets/widgets.js"></script>
     <script type="text/javascript" src="scripts/data.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
     <script type="text/javascript" src="scripts/utils.js"></script>
-
-
-    <style type="text/css">
-    	.center-wrapper{
-  			text-align: center;
-		}
-
-		.center-wrapper * {
-		  margin: 0 auto;
-		}
-
-		#gear-icon{
-			float: right;
-		}
-    </style>
 </head>
 
 <body>
-	<div data-role="page" id="scopes-page" data-theme="a">
-		<div data-role="popup" id="settings-popup" class="ui-content">
-			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-			<form id="theme-switch">
-			    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-			        <legend>Select a Theme:</legend>
-			        <input type="radio" name="theme-radio-btn" id="radio-choice-h-2a" value="light" checked="checked">
-			        <label for="radio-choice-h-2a">Light</label>
-			        <input type="radio" name="theme-radio-btn" id="radio-choice-h-2b" value="dark">
-			        <label for="radio-choice-h-2b">Dark</label>
-			    </fieldset>
-			</form>
-		</div>
-
+	<div data-role="page" id="scopes-page" data-theme="b">
 		<div data-role="header">
-			<h1> Hi there! </h1> 
-			<a href="#settings-popup" data-icon="gear" data-rel="popup" class="ui-btn-right" data-iconpos="notext">Icon only</a>
+			<h1> Dynamix Dashboard </h1> 
 		</div><!-- /header -->
-
 		<div role="main" class="ui-content">
 			<!-- here goes the list of scopes -->
 		</div>
-
 	</div><!-- /page -->
 
-	<div data-role="page" id="controls-page" data-theme="a">
+	<div data-role="page" id="controls-page" data-theme="b">
 		<div data-role="header">
-			<h1>Auto Generated <br/> Dashboard</h1>
+			<h1>Device Controls</h1>
 		</div><!-- /header -->
 		<div role="main" class="ui-content">
 			<center>
@@ -78,6 +42,10 @@
 					<a href="#" class="ui-btn ui-corner-all">Good Morning!</a>
 				</div>
 			</center>	
+
+			<div id="plugins-list">
+
+			</div>
 		</div><!-- /content -->
 	</div><!-- /page -->
 </body>

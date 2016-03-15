@@ -22,11 +22,15 @@ Data = {
          "name": "Bedroom media",
          "pluginId": "org.ambientdynamix.contextplugins.ambientmedia",
          "deviceProfiles": {
-           "": [
+           "Apple TV": [
              "DISPLAY_VIDEO",
              "PLAYBACK_PLAY_PAUSE",
              "PLAYBACK_FORWARD_SEEK",
              "PLAYBACK_BACKWARD_SEEK"
+           ], 
+           "Chromecast": [
+             "DISPLAY_VIDEO",
+             "PLAYBACK_PLAY_PAUSE"
            ]
          }
        }
@@ -42,7 +46,8 @@ Data = {
          "pluginId": "org.ambientdynamix.contextplugins.hueplugin",
          "deviceProfiles": {
            "Nirandika": [
-             "SWITCH"
+             "SWITCH",
+             "DISPLAY_COLOR"
            ],
            "Max Lifx": [
              "SWITCH",
@@ -90,4 +95,8 @@ Data = {
      ]
    }
  }
+};
+
+SharedData = {
+  currentScopeId : null
 };
