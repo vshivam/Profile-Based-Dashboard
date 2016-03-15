@@ -50,7 +50,39 @@ PageUtils = {
 					success();
 				}
 			};
-			$.loadScript(url,  )
+			$.loadScript(url, callback);
 		});
 	}
 };
+
+ScopeUtils = {
+	loadDataIntoView : function(){
+		var that = this;
+		var scopeName = "Family";
+		var accessScopeIds = Data["scopesForRole"][scopeName];
+		var accessScopes = [];
+		$.each(accessScopeIds, function(index, scopeId){
+			var accessScope = Data["accessScopes"][scopeId];
+			accessScopes.push({name : accessScope.name, scopeId : scopeId});
+		});
+		var scopesListTemplate = Handlebars.getTemplate('scopes-list');
+		var html = scopesListTemplate({accessScopes : accessScopes});
+		console.log(html);
+		$('#scopes-page').find('.ui-content').append(html);
+		$('#scopes-list').listview().listview('refresh');
+		$('#scopes-list').on('click', 'a.scope-listitem', function(event){
+			var scopeId = $(this).data('id');
+			that.openScopeViewer();
+		});
+	}, 
+
+	openScopeViewer : function(){
+		$.mobile.pageContainer.pagecontainer("change", "#controls-page");
+	}
+};
+
+DeviceUtils = {
+	loadDataIntoView : function() {
+		
+	}
+}

@@ -5,31 +5,25 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQuery UI CSS-->
-	<link id="jquery-ui-stylesheet" rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/overcast/jquery-ui.css">
-	<!-- jQM CSS -->
-    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" /> -->
+    <!-- jQM CSS-->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
     <link id="jqm-ui-stylesheet" rel="stylesheet" href="css/light-theme/light-theme.min.css" />
     <link id="jqm-icon-stylesheet" rel="stylesheet" href="css/light-theme/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
 
 	<!-- jQuery JS-->
-    <script src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- jQM JS -->
-  	<script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-  	<!-- jQuery UI JS -->
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
-    <script type="text/javascript" src="http://192.168.1.145:9096/dynamix-2.x-javascript-apis/libs/forge.min.js"></script>
-    <script type="text/javascript" src="http://192.168.1.145:9096/dynamix-2.x-javascript-apis/dynamix.js"></script>
-    <script type="text/javascript" src="http://192.168.1.145:9096/dynamix-2.x-javascript-apis/dynamixPairing.js"></script>
-    <script type="text/javascript" src="http://192.168.1.145:9096/dynamix-2.x-javascript-apis/widgets.js"></script>
-    <script type="text/javascript" src="http://192.168.1.145:9096/dynamix-2.x-javascript-apis/youtube.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  	
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    
+    <script type="text/javascript" src="scripts/data.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <script type="text/javascript" src="scripts/utils.js"></script>
 
-    <script type="text/javascript" src="colorpicker/colorpicker.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
 
     <style type="text/css">
     	.center-wrapper{
@@ -47,11 +41,9 @@
 </head>
 
 <body>
-	<div data-role="page" id="page-1" data-theme="a">
-
+	<div data-role="page" id="scopes-page" data-theme="a">
 		<div data-role="popup" id="settings-popup" class="ui-content">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-
 			<form id="theme-switch">
 			    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 			        <legend>Select a Theme:</legend>
@@ -64,40 +56,29 @@
 		</div>
 
 		<div data-role="header">
-			<h1> Guest Smart <br/> Space Dashboard </h1> 
-
+			<h1> Hi there! </h1> 
 			<a href="#settings-popup" data-icon="gear" data-rel="popup" class="ui-btn-right" data-iconpos="notext">Icon only</a>
 		</div><!-- /header -->
 
-
 		<div role="main" class="ui-content">
-
-			<p><div class="center-wrapper"> <a data-role="button" data-inline="true" id="btn-connect-dynamix">Connect to master Dynamix instance</a></div></p>
-
-			<p><div id="connect-log"> </div>  </p>
-
+			<!-- here goes the list of scopes -->
 		</div>
 
-		<div data-role="footer" data-position="fixed">
-			<h4>Sample Project</h4>
-		</div><!-- /footer -->
 	</div><!-- /page -->
 
-	<div data-role="page" id="page-2" data-theme="a">
-
+	<div data-role="page" id="controls-page" data-theme="a">
 		<div data-role="header">
 			<h1>Auto Generated <br/> Dashboard</h1>
 		</div><!-- /header -->
-
 		<div role="main" class="ui-content">
-
-			<div id="container"> </div>
+			<center>
+				<label for="scenes-controlgroup"> Scenes </label>
+				<div id="scenes" name="scenes-controlgrop" data-role="controlgroup" data-type="horizontal">
+					<a href="#" class="ui-btn ui-corner-all">Bedtime</a>
+					<a href="#" class="ui-btn ui-corner-all">Good Morning!</a>
+				</div>
+			</center>	
 		</div><!-- /content -->
-
-		<div data-role="footer" data-position="fixed">
-			<h4>Sample Project</h4>
-		</div><!-- /footer -->
 	</div><!-- /page -->
-
 </body>
 </html>
