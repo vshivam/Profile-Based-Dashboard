@@ -22,7 +22,7 @@ Data = {
          "name": "Bedroom media",
          "pluginId": "org.ambientdynamix.contextplugins.ambientmedia",
          "deviceProfiles": {
-           "": [
+           "Apple TV": [
              "DISPLAY_VIDEO",
              "PLAYBACK_PLAY_PAUSE",
              "PLAYBACK_FORWARD_SEEK",
@@ -90,4 +90,8 @@ Data = {
      ]
    }
  }
+};
+
+SharedData = {
+  currentScopeId : null
 };
