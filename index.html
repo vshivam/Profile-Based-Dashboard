@@ -23,28 +23,24 @@
 <body>
 	<div data-role="page" id="scopes-page" data-theme="b">
 		<div data-role="header">
-			<h1> Dynamix Dashboard </h1> 
+			<h1 id="scopename"> Dynamix Dashboard </h1> 
 		</div><!-- /header -->
 		<div role="main" class="ui-content">
+			<h4>Ambient Dynamix Dashboard - No setup, no hassles. <br/><br/> Explore the scopes below!</h4>
 			<!-- here goes the list of scopes -->
 		</div>
 	</div><!-- /page -->
 
 	<div data-role="page" id="controls-page" data-theme="b">
 		<div data-role="header">
-			<h1>Device Controls</h1>
+			<h1>Controls</h1>
 		</div><!-- /header -->
 		<div role="main" class="ui-content">
-			<center>
-				<label for="scenes-controlgroup"> Scenes </label>
-				<div id="scenes" name="scenes-controlgrop" data-role="controlgroup" data-type="horizontal">
-					<a href="#" class="ui-btn ui-corner-all">Bedtime</a>
-					<a href="#" class="ui-btn ui-corner-all">Good Morning!</a>
-				</div>
-			</center>	
-
+			<div id="scenes-container">
+				<!-- list of scenes -->
+			</div>	
 			<div id="plugins-list">
-
+				<!-- list of controls, grouped by plugin id --> 
 			</div>
 		</div><!-- /content -->
 	</div><!-- /page -->

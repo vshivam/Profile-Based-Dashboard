@@ -59,7 +59,8 @@ Data = {
      "name": "Kitchen",
      "ID": "19a3e652-3085-4970-995e-9716c3dff9e0",
      "scenes": [
-       "Bedtime"
+       "Bedtime", 
+       "Good Morning!!"
      ]
    }
  },

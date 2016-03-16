@@ -1,4 +1,5 @@
-<ul data-role="listview" id="scopes-list">
+<ul data-role="listview" data-inset="true" id="scopes-list">
+	<li data-role="header" data-theme="a">Scopes</li>
 	{{#each accessScopes}}
 	<li> <a class="scope-listitem" href="#" data-id="{{scopeId}}"> {{name}} </a> </li>
 	{{/each}}

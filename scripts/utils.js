@@ -88,6 +88,7 @@ ScopeUtils = {
 	loadDataIntoView : function(){
 		var that = this;
 		var scopeName = "Family";
+		$('#scopename').html("Hi there, " + scopeName + "!");
 		var accessScopeIds = Data["scopesForRole"][scopeName];
 		var accessScopes = [];
 		$.each(accessScopeIds, function(index, scopeId){
@@ -114,11 +115,21 @@ ScopeUtils = {
 Controls = {
 	reset : function(){
 		$('#plugins-list').empty();
+		$('#scenes-container').empty();
 	},
 	loadDataIntoView : function() {
 		var that = this;
 		this.reset();
 		var accessScope = Data["accessScopes"][SharedData.currentScopeId];
+		var scenes = accessScope["scenes"];
+
+		if(scenes.length > 0) {
+			var template = Handlebars.getTemplate('scenes-list');
+			var html = template({scenes: scenes});
+			$('#scenes-container').append(html);
+			$('#scenes-list').listview().listview("refresh");
+		}
+
 		$.each(accessScope.accessProfiles, function(index, accessProfile){
 			that.addContainerForPlugin(accessProfile);
 
