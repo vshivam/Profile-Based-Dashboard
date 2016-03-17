@@ -13,7 +13,6 @@ DynamixUtils = {
                     that.openDynamixSession();
                     break;
                 case Dynamix.Enums.BIND_ERROR :
-                    Dynamix.bind(bindListener)
                     break;
                 case Dynamix.Enums.UNBOUND :
                     break;
@@ -77,17 +76,30 @@ DynamixUtils = {
                             case Dynamix.Enums.SUCCESS :
                                 console.log("Context support approved for org.ambientdynamix.contextplugins.guigeneration");
                                 var configuredContextRequestCallback = function(status, result) {
+                                    console.log("configuredContextRequest result received");
                                     switch(status){
                                         case Dynamix.Enums.SUCCESS:
                                             Data = JSON.parse(result.ACCESS_PROFILES);
-                                            RoleUtils.loadDataIntoView();
+                                            ScopeUtils.loadDataIntoView();
                                         break;
                                     }
                                 };
 
+                                function getUrlParameter(paramName) {
+                                    var sPageURL = window.location.search.substring(1);
+                                    var sURLVariables = sPageURL.split('&');
+                                    for (var i = 0; i < sURLVariables.length; i++) {
+                                        var sParameterName = sURLVariables[i].split('=');
+                                        if (sParameterName[0] == paramName) {
+                                            return sParameterName[1];
+                                        }
+                                    }
+                                } 
+
+                                var pairingCode = getUrlParameter('pairingCode');
                                 handler.configuredContextRequest("GET", "org.ambientdynamix.contextplugins.guigeneration",  
                                     "org.ambientdynamix.contextplugins.guigeneration.accessprofiles", 
-                                    {params : {ACCESS_TOKEN : "ADMIN"}, callback : configuredContextRequestCallback});
+                                    {params : {ACCESS_TOKEN : pairingCode}, callback : configuredContextRequestCallback});
                                 break;
                             case Dynamix.Enums.FAILURE:
                                 console.log("Context support was not approved for org.ambientdynamix.contextplugins.guigeneration");

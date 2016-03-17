@@ -87,12 +87,20 @@ jQuery.loadJs = function(urls, success) {
 ScopeUtils = {
 	loadDataIntoView : function(){
 		var that = this;
+		/*
 		var scopeName = "Family";
 		$('#scopename').html("Hi there, " + scopeName + "!");
 		var accessScopeIds = Data["scopesForRole"][scopeName];
+		*/
+		var accessScopeIds = [];
 		var accessScopes = [];
+		for(key in Data) {
+			if(Data.hasOwnProperty(key)){
+				accessScopeIds.push(key);
+			}
+		}
 		$.each(accessScopeIds, function(index, scopeId){
-			var accessScope = Data["accessScopes"][scopeId];
+			var accessScope = Data[scopeId];
 			accessScopes.push({name : accessScope.name, scopeId : scopeId});
 		});
 		var scopesListTemplate = Handlebars.getTemplate('scopes-list');
@@ -120,15 +128,17 @@ Controls = {
 	loadDataIntoView : function() {
 		var that = this;
 		this.reset();
-		var accessScope = Data["accessScopes"][SharedData.currentScopeId];
-		var scenes = accessScope["scenes"];
-
-		if(scenes.length > 0) {
-			var template = Handlebars.getTemplate('scenes-list');
-			var html = template({scenes: scenes});
-			$('#scenes-container').append(html);
-			$('#scenes-list').listview().listview("refresh");
+		var accessScope = Data[SharedData.currentScopeId];
+		if("scenes" in accessScope ) {
+			var scenes = accessScope["scenes"];
+			if(scenes.length > 0) {
+				var template = Handlebars.getTemplate('scenes-list');
+				var html = template({scenes: scenes});
+				$('#scenes-container').append(html);
+				$('#scenes-list').listview().listview("refresh");
+			}
 		}
+
 
 		$.each(accessScope.accessProfiles, function(index, accessProfile){
 			that.addContainerForPlugin(accessProfile);

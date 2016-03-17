@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	ScopeUtils.loadDataIntoView();
+	DynamixUtils.bindDynamix();
 
     $(document).on("pageshow","#controls-page",function(event){ 
         console.log("pageshow devices page");
