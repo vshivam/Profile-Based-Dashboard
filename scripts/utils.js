@@ -1,3 +1,5 @@
+var externalJs = [];
+var externalCss = [];
 Handlebars.getTemplate = function(name) {
 	if (Handlebars.templates === undefined || Handlebars.templates[name] === undefined) {
 	    $.ajax({
@@ -20,6 +22,7 @@ Handlebars.getWidgetTemplate = function(pluginId) {
 	    $.ajax({
 	        url : 'scripts/dynamix/widgets/templates/' + DynamixWidgets.widgetsMap[pluginId]["template"] + '.handlebars',
 	        success : function(data) {
+	        	console.log(data);
 	            if (Handlebars.templates === undefined) {
 	                Handlebars.templates = {};
 	            }
@@ -72,13 +75,23 @@ jQuery.loadJs = function(urls, success) {
 	} else {
 		var count = 0;
 		$.each(urls, function(index, url){
-			var callback = function(){
+			//Only load the js if it hasn't been previously loaded. 
+			if(externalJs.indexOf(url) > 0){
+				console.log(url + " : already exists");
 				count++;
 				if(count == urls.length){
 					success();
 				}
-			};
-			$.loadScript(url, callback);
+			} else {
+				var callback = function(){
+					externalJs.push(url);
+					count++;
+					if(count == urls.length){
+						success();
+					}
+				};
+				$.loadScript(url, callback);
+			}
 		});
 	}
 }

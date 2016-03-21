@@ -96,7 +96,12 @@ DynamixUtils = {
                                     }
                                 } 
 
-                                var pairingCode = getUrlParameter('pairingCode');
+                                var pairingCode = null;
+                                if(PairingUtils.pairingCode != ""){
+                                    pairingCode = PairingUtils.pairingCode;
+                                }else {
+                                    pairingCode = getUrlParameter('pairingCode');
+                                }
                                 handler.configuredContextRequest("GET", "org.ambientdynamix.contextplugins.guigeneration",  
                                     "org.ambientdynamix.contextplugins.guigeneration.accessprofiles", 
                                     {params : {ACCESS_TOKEN : pairingCode}, callback : configuredContextRequestCallback});
@@ -114,5 +119,58 @@ DynamixUtils = {
             }
         };
         Dynamix.createContextHandler(createNewHandlerCallback);
-    }    
+    }, 
+
+    sendCommand : function(bundle){
+        var handler = this.getContextHandler();
+        var configuredContextRequestCallback = function(status, result) {
+            console.log("configuredContextRequest result received");
+            switch(status){
+                case Dynamix.Enums.SUCCESS:
+                    console.log("command executed successfully");
+                    console.log(result);
+                break;
+            }
+        };
+
+        var params = {
+            ACCESS_TOKEN : PairingUtils.pairingCode, 
+            OPERATION : "COMMAND"
+        };
+
+        for (var attrname in bundle) { 
+            if(bundle.hasOwnProperty(attrname)){
+                params[attrname] = bundle[attrname]; 
+            }
+        }
+
+        console.log(params);
+
+        handler.configuredContextRequest("POST", "org.ambientdynamix.contextplugins.guigeneration",  
+            "org.ambientdynamix.contextplugins.guigeneration.accessprofiles", {
+                params : params, 
+                callback : configuredContextRequestCallback
+            });        
+
+    }, 
+
+    scan : function(pluginId){
+        var handler = this.getContextHandler();
+        var params = {
+            ACCESS_TOKEN : "ADMIN", 
+            OPERATION : "SCAN", 
+            TARGET_PLUGIN_ID : pluginId
+        };
+
+        function configuredContextRequestCallback(status, result){
+            console.log(status);
+            console.log(result);
+        }
+
+        handler.configuredContextRequest("GET", "org.ambientdynamix.contextplugins.guigeneration",  
+            "org.ambientdynamix.contextplugins.guigeneration.accessprofiles", {
+                params : params, 
+                callback : configuredContextRequestCallback
+        });   
+    }
 };
