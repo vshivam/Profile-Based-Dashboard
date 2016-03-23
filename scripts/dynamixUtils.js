@@ -87,6 +87,9 @@ DynamixUtils = {
 
                                 function getUrlParameter(paramName) {
                                     var sPageURL = window.location.search.substring(1);
+                                    if(sPageURL.slice(-1) == '/'){
+                                        sPageURL = sPageURL.slice(0, -1);
+                                    }
                                     var sURLVariables = sPageURL.split('&');
                                     for (var i = 0; i < sURLVariables.length; i++) {
                                         var sParameterName = sURLVariables[i].split('=');
@@ -94,7 +97,7 @@ DynamixUtils = {
                                             return sParameterName[1];
                                         }
                                     }
-                                } 
+                                }  
 
                                 var pairingCode = null;
                                 if(PairingUtils.pairingCode != ""){
