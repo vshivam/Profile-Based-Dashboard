@@ -157,6 +157,38 @@ DynamixUtils = {
 
     }, 
 
+    loadScene : function(bundle){
+        var handler = this.getContextHandler();
+        var configuredContextRequestCallback = function(status, result) {
+            console.log("configuredContextRequest result received");
+            switch(status){
+                case Dynamix.Enums.SUCCESS:
+                    console.log("command executed successfully");
+                    console.log(result);
+                break;
+            }
+        };
+
+        var params = {
+            ACCESS_TOKEN : PairingUtils.pairingCode, 
+            OPERATION : "SCENE"
+        };
+
+        for (var attrname in bundle) { 
+            if(bundle.hasOwnProperty(attrname)){
+                params[attrname] = bundle[attrname]; 
+            }
+        }
+
+
+        handler.configuredContextRequest("POST", "org.ambientdynamix.contextplugins.guigeneration",  
+            "org.ambientdynamix.contextplugins.guigeneration.accessprofiles", {
+                params : params, 
+                callback : configuredContextRequestCallback
+            });        
+
+    }, 
+
     scan : function(pluginId){
         var handler = this.getContextHandler();
         var params = {
