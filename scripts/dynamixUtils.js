@@ -127,7 +127,6 @@ DynamixUtils = {
     sendCommand : function(bundle){
         var handler = this.getContextHandler();
         var configuredContextRequestCallback = function(status, result) {
-            console.log("configuredContextRequest result received");
             switch(status){
                 case Dynamix.Enums.SUCCESS:
                     console.log("command executed successfully");
@@ -157,13 +156,12 @@ DynamixUtils = {
 
     }, 
 
-    loadScene : function(bundle){
+    loadScene : function(sceneName){
         var handler = this.getContextHandler();
         var configuredContextRequestCallback = function(status, result) {
-            console.log("configuredContextRequest result received");
             switch(status){
                 case Dynamix.Enums.SUCCESS:
-                    console.log("command executed successfully");
+                    console.log("scene loaded successfully");
                     console.log(result);
                 break;
             }
@@ -171,15 +169,11 @@ DynamixUtils = {
 
         var params = {
             ACCESS_TOKEN : PairingUtils.pairingCode, 
-            OPERATION : "SCENE"
+            OPERATION : "SCENE", 
+            SCENE : sceneName
         };
 
-        for (var attrname in bundle) { 
-            if(bundle.hasOwnProperty(attrname)){
-                params[attrname] = bundle[attrname]; 
-            }
-        }
-
+        console.log(params);
 
         handler.configuredContextRequest("POST", "org.ambientdynamix.contextplugins.guigeneration",  
             "org.ambientdynamix.contextplugins.guigeneration.accessprofiles", {

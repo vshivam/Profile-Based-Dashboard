@@ -155,9 +155,7 @@ Controls = {
 		$('#scenes-list').on('click', 'a', function(event){
 			var sceneName = $(this).data('name');
 			console.log(sceneName);
-			DynamixUtils.sendCommand({
-                SCENE : sceneName;
-			});
+			DynamixUtils.loadScene(sceneName);
 		})
 
 
